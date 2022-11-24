@@ -1,0 +1,60 @@
+list <string> lstcountrynames=new list <string>();
+    system.debug('collection size '+lstcountrynames.size());
+//adding elements
+
+lstcountrynames.add('india');
+lstcountrynames.add('japan');
+lstcountrynames.add('china');
+lstcountrynames.add('us');
+lstcountrynames.add('russia');
+
+//print the collection size and elements//
+
+system.debug('collecton size'+lstcountrynames.size() );
+system.debug('collection elements are'+lstcountrynames);
+//insert elements at a position//
+lstcountrynames.add(2,'africa');
+system.debug('collection elements are'+lstcountrynames);
+
+//add multiple elements//
+string[] countries =new string[]{'spain','sri lanka','nepal'};
+lstcountrynames.addall(countries);
+system.debug('collection elements are'+lstcountrynames);
+
+//check the collection is empty//
+if(lstcountrynames.isempty())
+    system.debug('collectoin is empty');
+else
+    system.debug('collection is not empty');
+
+//search for the elements//
+if(lstcountrynames.contains('india'))
+{
+    system.debug('elements found in the collection');
+     system.debug('elemrnt index position'+lstcountrynames.indexof('india'));
+}
+    else
+    system.debug('elements not found in the collection');
+
+
+//replace the elemens value//
+
+lstcountrynames.set(lstcountrynames.indexof('us'),'united states');
+system.debug('after the replace elements are'+lstcountrynames);
+
+
+// arrange the elements//
+
+for(integer counter=lstcountrynames.size()-1 ; counter>=0;counter--)
+{
+    system.debug('country names is'+lstcountrynames[counter]);
+}
+
+//remove the elements//
+lstcountrynames.remove(4);
+system.debug('after removing the elemrnts are '+lstcountrynames);
+    
+//remove all the elements//
+lstcountrynames.clear();
+system.debug('after removing all the elements are '+lstcountrynames);
+ 
