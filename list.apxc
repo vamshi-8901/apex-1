@@ -58,3 +58,6 @@ system.debug('after removing the elemrnts are '+lstcountrynames);
 lstcountrynames.clear();
 system.debug('after removing all the elements are '+lstcountrynames);
  
+ // arrange the elements//
+ lstcountrynames.sort();
+ system.debug('after sorting the elements are'+lstcountrynames);
