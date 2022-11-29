@@ -1,0 +1,53 @@
+//define the map collection//
+
+map <string , string > fruitsmap=new map<string ,string>();
+system.debug('size of the map collection'+fruitsmap.size());
+
+// print the collection size//
+
+system.debug('size of the map collection'+fruitsmap.size());
+
+//adding the elements//
+fruitsmap.put('red','apple');
+fruitsmap.put('orange','oranage');
+fruitsmap.put('black','grapes');
+    system.debug('elements in the collection'+fruitsmap);
+
+
+//adding the duplicate elements//
+
+fruitsmap.put('red','cherrry');
+    system.debug('elements in the collection'+fruitsmap);
+
+//check the collection empty or not//
+
+if(fruitsmap.isempty())
+    system.debug('the map collection is empty');
+else
+    system.debug('the map collection is not empty the map collection is   '+fruitsmap);
+
+
+// get the elements value//
+
+system.debug('the value of red is '+fruitsmap.get('red'));
+
+//search for the elements//
+if(fruitsmap.containskey('orange'))
+    system.debug('the elements found in the collection   '+fruitsmap.get('orange'));
+
+//get the keys values//
+list<string>valuescollection =fruitsmap.values();
+system.debug('the values of the collection'+valuescollection);
+
+//get the keys collection//
+set<string>keycollection=fruitsmap.keyset();
+system.debug('the key collection is  '+keycollection);
+
+// remove the elements//
+fruitsmap.remove('orange');
+system.debug('after removing the elements  '+fruitsmap);
+
+//remove all the elements//
+fruitsmap.clear();
+system.debug('after removing the elements  '+fruitsmap);
+system.debug('size of the map collection'+fruitsmap.size());
