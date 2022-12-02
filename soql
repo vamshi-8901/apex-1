@@ -1,0 +1,136 @@
+public class Databasemethod {
+    public static void getallrecords()
+    {
+       list<account> lstaccount= [select id,name, rating,industry,phone,fax,active__c from account];
+         system.debug('number of records return'+lstaccount.size());
+        if(! lstaccount.isempty())
+        {
+            for(account accrecord:lstaccount)
+            {
+              SYSTEM.debug('ACCOUNT RECORD ID IS   '+ACCRECORD.ID);  
+                SYSTEM.debug('ACCOUNT RECORD NAME IS'+ACCRECORD.Name);
+                 SYSTEM.debug('ACCOUNT RECORD RATING IS'+ACCRECORD.Rating);
+                 SYSTEM.debug('ACCOUNT RECORD PHONE IS'+ACCRECORD.Phone);
+                SYSTEM.debug('----------------------------------------------');
+            }
+        }
+            
+            
+
+    }
+  //  ============================================================================================================================================
+    
+   Public static void GetLeadRecords()
+    {        
+            for(Lead ldRecord : [Select id, firstName, lastName, title, company, status, 
+        							phone, fax, email, industry, annualrevenue
+        								from Lead])
+            {
+                System.debug('Lead Id is.....: '+ ldRecord.Id);
+                System.debug('Lead Name is....: '+ ldRecord.FirstName + ' '+ ldRecord.LastName);
+                System.debug('Company Name is....: '+ ldRecord.Company);
+                System.debug('Lead Status is.....: '+ ldRecord.Status);
+                System.debug('Contact Number is.....: '+ ldRecord.Phone);
+                System.debug('Lead Designation is....: '+ ldRecord.Title);
+                System.debug('Lead Email Address is....: '+ ldRecord.Email);
+                
+                System.debug('------------------------------------------');
+                
+            }
+        
+        	System.debug('Number of Lead Records Returned....: '+ System.Limits.getQueryRows());
+    }
+  // ======================================================================================================================== 
+    public static void getleadsrecords()
+    {
+        for(lead ltrecords:[select id,firstname,lastname,title, company,status,fax from lead])
+        {
+           system.debug('print the id of the lead'+ltrecords.Id);
+             system.debug('print the id of the lead'+ltrecords.FirstName+''+ltrecords.LastName);
+             system.debug('print the id of the lead'+ltrecords.Title);
+        }
+        system.debug('the size of the collection is'+system.Limits.getQueryRows());
+    }
+   //===================================================================================================== 
+    public static void grthrrecords()
+    {
+        for(hiring_manager__c hrrecord:[select id,name, location__c, desgnation__C,
+                                               			contact_number__C, email_address__C
+                                               				from Hiring_Manager__C])
+        {
+            
+        }
+    }
+   //======================================================================================================= 
+    public static void getsize()
+    {
+        
+        list<account> lstrecord  = [select id,name,industry,fax,phone from account];
+        system.debug('the numbers of records returned'+lstrecord.size());
+        
+         if( lstrecord.isEmpty()) // if yoy want size don't use !//
+        {
+            for(Account accRecord : lstrecord)
+            {
+                System.debug('Account Record Id is....: '+ accRecord.Id);
+                System.debug('Account Name is.....: '+ accRecord.Name);
+            }
+        }
+        
+    }
+    
+   //==========================================================================================================================// 
+    public static void getall()
+    {
+        Map<Id, Hiring_Manager__C> mapHRRecords = new Map<Id, Hiring_Manager__C>([Select id, name, location__c, desgnation__C,
+                                               											contact_number__C, email_address__C
+                                               												from Hiring_Manager__C]);
+        
+        System.debug('Number of Records.....: '+ mapHRRecords.Size());
+        if(!maphrrecords.isempty())
+        {
+            for(hiring_manager__c hrrecord:mapHRRecords.values())
+            {
+               System.debug('Hiring Manager Record is...: '+ hrRecord);  
+            }
+        }
+        
+      
+            
+    }
+    
+   //==========================================================================================================================// 
+    // used clauses order by,limit,all rows,offset//
+    
+    public static void exportallaccounts()
+    {
+      list<account> lstrecords =[select id,name,rating,industry,fax,isdeleted from account order by name limit 10 all rows];
+        system.debug('the records size id'+lstrecords.size());
+        if(!lstrecords.isempty()){
+            for(account accrecord:lstrecords)
+            {
+              system.debug('accounts records is'+accrecord);  
+            }
+        }
+    }
+    //=============================================================================================================================//
+    public static void databasehelper(integer limitvalues,integer offsetvalues)
+    {
+      if(limitvalues>0)
+      {
+        list<lead> leadrec =[select firstname,lastname,company,phone from lead order by lastname limit:limitvalues offset:offsetvalues ];
+          
+          if(!leadrec.isempty())
+          {
+              for(lead lstrecord:leadrec)
+              {
+                  system.debug('get all the records'+lstrecord);
+              }
+          }
+         
+      }
+        
+        
+    }
+   
+}
