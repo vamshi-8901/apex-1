@@ -132,5 +132,38 @@ public class Databasemethod {
         
         
     }
+    
+      public static void users()
+    {
+        list<user> us =[select id,name ,companyname,city,isactive from user where isactive= true  order by name desc offset 4  ];
+        system.debug('users size '+us.size());
+        
+        if(!us.isempty())
+        {
+            for(user ust :us)
+            {
+                system.debug('all the user in the organisation    :'+ust);
+            }
+        }
+    }
+    
+
+
+    public static void getaccount(string rating, string industry)
+    {
+        if(rating!=null && industry!=null)
+        {
+            list<account> att=[select id,name,rating,industry,annualrevenue from account where annualrevenue>=2000000];
+            system.debug('the size of the records is  '+att.size());
+            if(!att.isempty())
+            {
+                for(account acc:att)
+                {
+                    
+                    system.debug('all the account records u want '+acc);
+                }
+            }
+        }
+    }
    
 }
