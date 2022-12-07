@@ -167,3 +167,19 @@ public class Databasemethod {
     }
    
 }
+
+=================================================================================================================================
+get the onlu count of the records 
+
+public static void getcasescount()
+{
+
+         //static soql//
+         integer  casecount=[select count() from case];
+             system.debug('number of case record  in static   -'+casecount);
+    
+    // dynamic soql//
+    string casesquery ='select count() from case';
+    integer recordscount=database.countQuery(casesquery);
+    system.debug('number of case records  - dynamic'+recordscount);
+}
