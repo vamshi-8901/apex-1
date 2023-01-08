@@ -1,0 +1,52 @@
+public class Globalsearchutility 
+{
+public static void searchrecord()
+{
+    list<list<sobject>> lstrecords =[find 'test*' IN ALL Fields Returning account(id,name),
+                                     contact(id,name),
+                                     lead(id,name),
+                                     Hiring_manager__c(id,name)];
+    
+    // converting sobject to object//
+     list<account> lstaccount =(list<account>)lstrecords.get(0);
+     list<contact> lstcontact =(list<contact>)lstrecords.get(1);
+      list<lead> lstlead=(list<lead>)lstrecords.get(2);
+    list<Hiring_manager__c> lsthr=(list<hiring_manager__c>)lstrecords.get(3);
+      // representing on the debug logfile//
+      system.debug('the size of the account record  :'+lstaccount.size());
+    if(!lstaccount.isempty())
+    {
+        for(account accrecord:lstaccount)
+        {
+            system.debug(accrecord);
+        }
+    }
+    system.debug('---------------------------------------------------------------------------');
+    system.debug('the size of the contact record  :'+lstcontact.size());
+    if(!lstcontact.isempty())
+    {
+        for(contact accrecord:lstcontact)
+        {
+            system.debug(accrecord);
+        }
+    }
+    system.debug('---------------------------------------------------------------------------');
+    system.debug('the size of the contact record  :'+lstlead.size());
+    if(!lstlead.isempty())
+    {
+        for(lead accrecord:lstlead)
+        {
+            system.debug(accrecord);
+        }
+    }
+    system.debug('---------------------------------------------------------------------------');
+    system.debug('the size of the contact record  :'+lsthr.size());
+    if(!lsthr.isempty())
+    {
+        for(Hiring_manager__c accrecord:lsthr)
+        {
+            system.debug(accrecord);
+        }
+    }
+}
+}
