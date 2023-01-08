@@ -50,3 +50,49 @@ public static void searchrecord()
     }
 }
 }
+// Dynamic sosl//
+ 
+    public static void searchrecorddynamic(string searchtext)
+    {
+        string searchQuery = 'FIND '+ '\'' + searchText + '*'+ '\''+ ' IN ALL FIELDS RETURNING '+
+'Account (Id, name, rating, industry, type, active__C),' +
+'Lead(id, firstname, lastname, email, company, title, status),'+
+'User(id, firstname, lastname, title, email, username, isactive),'+
+'Candidate__c(id, name, location__C, notice_period__C),'+
+'Position__C(id, name, location__C)';
+{
+List<List<SObject>> searchResults = Search.query(searchQuery);
+    
+        // explict type cast//
+       list<account> lstaccount =(list<account>)searchResults.get(0);
+       list<lead> lstlead=(list<lead>)searchResults.get(1);
+    list<user> lstuser=(list<user>)searchResults.get(2);
+    
+    // get them into debug log file//
+    system.debug('The size of the account records  :'+lstaccount.size());
+    if(!searchresults.isempty())
+    {
+        for(account accrecord:lstaccount)
+        {
+            system.debug(accrecord);
+        }
+    }
+     system.debug('The size of the account records  :'+lstlead.size());
+    if(!searchresults.isempty())
+    {
+        for(lead accrecord:lstlead)
+        {
+            system.debug(accrecord);
+        }
+    }
+     system.debug('The size of the account records  :'+lstuser.size());
+    if(!searchresults.isempty())
+    {
+        for(user accrecord:lstuser)
+        {
+            system.debug(accrecord);
+        }
+    }
+}
+}
+}
